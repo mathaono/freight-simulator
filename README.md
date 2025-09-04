@@ -40,6 +40,20 @@ Fase 3:
 
 ################################################################################################################
 
+Fase 4:
+
+    - Implementação do handler HTTP REST no microsserviço address-svc
+    - Definição da rota: GET /cep/{cep} para busca de endereço por CEP
+    - Criação da função FindCEP no service para centralizar a lógica da rota
+    - Utilização de cache Redis e fallback para provedor (mock)
+    - Uso do logger estruturado (zap) com tratamento de erro crítico no main
+    - Registro de rotas com o pacote gorilla/mux
+    - Criação e execução de testes unitários para o handler HTTP com httptest
+    - Validação de resposta JSON com status HTTP 200 e corpo esperado
+    - Testes executados com make test, cobrindo sucesso e validações
+
+################################################################################################################
+
 Estrutura de diretórios (até o momento - 01/09/2025)
 
 freight-simulator/

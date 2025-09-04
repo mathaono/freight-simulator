@@ -14,10 +14,12 @@ services:
   
   address-svc:
     build:
-      context: ./services/address
+      context: .
       dockerfile: Dockerfile
     env_file:
       - .env.example
+    environment:
+      - REDIS_ADDR=redis:6379
     ports:
       - "8080:8080"
     depends_on:

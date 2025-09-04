@@ -15,11 +15,11 @@ import (
 var reDigits = regexp.MustCompile(`\D`)
 
 type Service struct {
-	cache    *cache.RedisCache
+	cache    cache.CEPCache
 	provider cep.Provider
 }
 
-func NewService(c *cache.RedisCache, p cep.Provider) *Service {
+func NewService(c cache.CEPCache, p cep.Provider) *Service {
 	return &Service{
 		cache:    c,
 		provider: p,
@@ -42,7 +42,7 @@ type Address struct {
 	Longitude float64 `json:"longitude"`
 }
 
-func (s *Service) Lookup(ctx context.Context, rawCep string) (Address, error) {
+func (s *Service) FindCEP(ctx context.Context, rawCep string) (Address, error) {
 	cep, err := NormalizeCEP(strings.TrimSpace(rawCep))
 	if err != nil {
 		return Address{}, err

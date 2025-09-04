@@ -1,11 +1,14 @@
 # Build stage
 FROM golang:1.23.4-alpine AS builder
 
-WORKDIR /src
+WORKDIR /app
+COPY go.mod go.sum ./
+RUN go mod download
+
 COPY . .
 
 # COPY go.mod go.sum ./
-RUN go build -C cmd/api -o /out/address-svc
+RUN go build -o /out/address-svc ./services/address/cmd/api
 
 # Final stage
 FROM alpine:3.19
