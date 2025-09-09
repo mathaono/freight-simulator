@@ -40,3 +40,15 @@ func L() *zap.Logger {
 	}
 	return log
 }
+
+func Info(message string, fields ...zap.Field) {
+	L().Info(message, fields...)
+}
+
+func Error(message string, fields ...zap.Field) {
+	L().Error(message, fields...)
+}
+
+func Warn(message string, fields ...zap.Field) {
+	L().Warn(message, fields...)
+}

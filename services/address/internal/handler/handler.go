@@ -21,6 +21,8 @@ func NewHandler(svc app.Service) *Handler {
 
 func (h *Handler) Routes() http.Handler {
 	r := chi.NewRouter()
+	r.Use(LogginMiddleware)
+
 	r.Get("/cep/{cep}", h.GetCEPHandler)
 	return r
 }
